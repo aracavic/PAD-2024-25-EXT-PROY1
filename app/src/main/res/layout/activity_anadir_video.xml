@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Campo para el título del video -->
+    <EditText
+        android:id="@+id/etTituloVideo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Título del Video"
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Campo para la URL del video -->
+    <EditText
+        android:id="@+id/etUrlVideo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="URL del Video"
+        android:inputType="textUri"
+        app:layout_constraintTop_toBottomOf="@id/etTituloVideo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Campo para la categoría del video -->
+    <EditText
+        android:id="@+id/etCategoriaVideo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Categoría del Video"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/etUrlVideo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Botón para guardar el video -->
+    <Button
+        android:id="@+id/btnGuardarVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar Video"
+        app:layout_constraintTop_toBottomOf="@id/etCategoriaVideo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
