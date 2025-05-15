@@ -39,6 +39,7 @@ dependencies {
     implementation(libs.constraintlayout)
 
     implementation("androidx.room:room-runtime:2.5.2")
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
     implementation(libs.room.common.jvm)
     annotationProcessor("androidx.room:room-compiler:2.5.2")
 

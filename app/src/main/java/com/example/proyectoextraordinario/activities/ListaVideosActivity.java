@@ -39,7 +39,7 @@ public class ListaVideosActivity extends AppCompatActivity {
             List<Video> videos = db.videoDao().obtenerTodosLosVideos();
             runOnUiThread(() -> {
                 // Configurar el adaptador con los datos
-                videoAdapter = new VideoAdapter(videos);
+                videoAdapter = new VideoAdapter(videos, this, db.videoDao()); // Pasar 'this' como LifecycleOwner
                 rvListaVideos.setAdapter(videoAdapter);
             });
         }).start();

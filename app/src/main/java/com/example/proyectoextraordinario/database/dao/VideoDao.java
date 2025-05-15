@@ -29,4 +29,14 @@ public interface VideoDao {
 
     @Query("SELECT * FROM Video WHERE categoria = :categoria")
     List<Video> obtenerVideosPorCategoria(String categoria);
+
+    @Query("SELECT COUNT(*) > 0 FROM video WHERE id = :videoId AND favorito = 1")
+    boolean esFavorito(int videoId);
+
+    @Query("UPDATE video SET favorito = 1 WHERE id = :videoId")
+    void agregarAFavoritos(int videoId);
+
+    @Query("UPDATE video SET favorito = 0 WHERE id = :videoId")
+    void eliminarDeFavoritos(int videoId);
+
 }
