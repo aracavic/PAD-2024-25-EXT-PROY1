@@ -44,6 +44,7 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:2.5.2")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("androidx.work:work-runtime:2.8.1")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

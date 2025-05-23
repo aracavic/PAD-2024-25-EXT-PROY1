@@ -10,9 +10,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.room.Room;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import com.example.proyectoextraordinario.database.AppDatabase;
 import com.example.proyectoextraordinario.R;
+import com.example.proyectoextraordinario.models.*;
+
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,5 +44,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, PrincipalActivity.class);
             startActivity(intent);
         });
+
     }
+
+
 }

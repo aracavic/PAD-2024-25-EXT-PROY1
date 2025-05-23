@@ -79,11 +79,11 @@ public class SugerenciasActivity extends AppCompatActivity {
                     for (YouTubeResponse.Item item : response.body().getItems()) {
                         String titulo = item.getSnippet().getTitle(); // Título del video
                         String url = "https://www.youtube.com/watch?v=" + item.getId().getVideoId(); // URL del video
-                        String categoria = "Sin categoría"; // Categoría predeterminada
+                        String categoria = asignarCategoria(titulo); // Asignar categoría basada en el título
 
                         Video video = new Video(titulo, url, categoria, false); // Crear objeto Video
                         videoList.add(video); // Agregar a la lista
-                        Log.d("Video", "Título: " + titulo + ", URL: " + url); // Log para depuración
+                        Log.d("Video", "Título: " + titulo + ", URL: " + url + ", Categoría: " + categoria); // Log para depuración
                     }
                     videoAdapter.notifyDataSetChanged(); // Notificar al adaptador
                 } else {
@@ -96,5 +96,16 @@ public class SugerenciasActivity extends AppCompatActivity {
                 Toast.makeText(SugerenciasActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    // Método para asignar una categoría basada en el título
+    private String asignarCategoria(String titulo) {
+        String[] categorias = {"Programación", "Desarrollo móvil", "Kotlin", "Java", "apps Android", "desarrollador software", "tutorial Android", "API REST", "Firebase", "SQLite Android"};
+        for (String categoria : categorias) {
+            if (titulo.toLowerCase().contains(categoria.toLowerCase())) {
+                return categoria; // Retorna la categoría si coincide
+            }
+        }
+        return "Sin categoría"; // Categoría predeterminada si no hay coincidencias
     }
 }

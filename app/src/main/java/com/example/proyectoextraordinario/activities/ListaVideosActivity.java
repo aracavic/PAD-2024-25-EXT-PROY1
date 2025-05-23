@@ -2,7 +2,11 @@ package com.example.proyectoextraordinario.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +19,17 @@ import com.example.proyectoextraordinario.models.Video;
 import com.example.proyectoextraordinario.adapters.VideoAdapter;
 
 import java.util.List;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.os.Build;
+
+import androidx.core.app.NotificationCompat;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
+
+import java.util.concurrent.TimeUnit;
 
 public class ListaVideosActivity extends AppCompatActivity {
 
@@ -54,10 +69,31 @@ public class ListaVideosActivity extends AppCompatActivity {
             List<Video> videos = db.videoDao().obtenerTodosLosVideos();
             runOnUiThread(() -> {
                 // Configurar el adaptador con los datos
-                videoAdapter = new VideoAdapter(videos, this, db.videoDao()); // Pasar 'this' como LifecycleOwner
+                videoAdapter = new VideoAdapter(videos, this, db.videoDao());
                 rvListaVideos.setAdapter(videoAdapter);
             });
         }).start();
+
+        // Configurar Spinner
+        Spinner spinnerTematicas = findViewById(R.id.spinnerTematicas);
+        String[] tematicas = {"Todas","Programación", "Desarrollo móvil", "Kotlin", "Java", "apps Android", "desarrollador software", "tutorial Android", "API REST", "Firebase", "SQLite Android"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tematicas);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTematicas.setAdapter(adapter);
+
+        // Manejar selección del Spinner
+        spinnerTematicas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String tematicaSeleccionada = tematicas[position];
+                filtrarVideosPorTematica(tematicaSeleccionada);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // No hacer nada
+            }
+        });
 
         Button btnanadirvideo = findViewById(R.id.btnAgregarVideo);
         btnanadirvideo.setOnClickListener(v -> {
@@ -65,4 +101,21 @@ public class ListaVideosActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
+    // Método para filtrar videos por temática
+    private void filtrarVideosPorTematica(String tematica) {
+        new Thread(() -> {
+            List<Video> videos;
+            if (tematica.equals("Todas")) {
+                videos = db.videoDao().obtenerTodosLosVideos();
+            } else {
+                videos = db.videoDao().obtenerVideosPorCategoria(tematica);
+            }
+            runOnUiThread(() -> {
+                videoAdapter = new VideoAdapter(videos, this, db.videoDao());
+                rvListaVideos.setAdapter(videoAdapter);
+            });
+        }).start();
+    }
+
 }

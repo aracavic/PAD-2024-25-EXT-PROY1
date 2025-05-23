@@ -1,8 +1,10 @@
 package com.example.proyectoextraordinario.activities;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +16,10 @@ import com.example.proyectoextraordinario.models.Video;
 
 public class AnadirVideoActivity extends AppCompatActivity {
 
-    private EditText etTituloVideo, etUrlVideo, etCategoriaVideo;
+    private EditText etTituloVideo, etUrlVideo;
     private Button btnGuardarVideo;
     private AppDatabase db;
+    private Spinner spinnerTematicas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +29,23 @@ public class AnadirVideoActivity extends AppCompatActivity {
         // Inicializar vistas
         etTituloVideo = findViewById(R.id.etTituloVideo);
         etUrlVideo = findViewById(R.id.etUrlVideo);
-        etCategoriaVideo = findViewById(R.id.etCategoriaVideo);
+        spinnerTematicas = findViewById(R.id.spinnerTematicas);
         btnGuardarVideo = findViewById(R.id.btnGuardarVideo);
 
         // Inicializar base de datos
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "usuarios-db").build();
 
+        Spinner spinnerTematicas = findViewById(R.id.spinnerTematicas);
+        String[] tematicas = {"Programación", "Desarrollo móvil", "Kotlin", "Java", "apps Android", "desarrollador software", "tutorial Android", "API REST", "Firebase", "SQLite Android"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tematicas);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTematicas.setAdapter(adapter);
+
         // Configurar botón para guardar el video
         btnGuardarVideo.setOnClickListener(v -> {
             String titulo = etTituloVideo.getText().toString().trim();
             String url = etUrlVideo.getText().toString().trim();
-            String categoria = etCategoriaVideo.getText().toString().trim();
+            String categoria = spinnerTematicas.getSelectedItem().toString();
 
             if (titulo.isEmpty() || url.isEmpty() || categoria.isEmpty()) {
                 Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();

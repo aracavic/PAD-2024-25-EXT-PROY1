@@ -19,12 +19,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
+    <!-- Spinner para filtrar por temáticas -->
+    <Spinner
+        android:id="@+id/spinnerTematicas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvTituloVideos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="16dp" />
+
     <!-- RecyclerView para mostrar los videos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListaVideos"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/tvTituloVideos"
+        app:layout_constraintTop_toBottomOf="@id/spinnerTematicas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btnAgregarVideo"
@@ -35,7 +46,7 @@
         android:id="@+id/btnAgregarVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Agregar Video"
+        android:text="Nuevos Videos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

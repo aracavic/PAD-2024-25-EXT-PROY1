@@ -5,18 +5,32 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <!-- Título centrado con márgenes -->
+    <TextView
+        android:id="@+id/tvSugerenciasTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sugerencias de Videos"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
     <!-- Botón para agregar videos manualmente -->
     <Button
         android:id="@+id/btnAgregarVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agregar Video"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSugerenciasTitulo"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp" />
 
-    <!-- Barra de progreso para indicar carga -->
+    <!-- Barra de progreso centrada -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -25,9 +39,9 @@
         app:layout_constraintTop_toBottomOf="@id/btnAgregarVideo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="16dp" />
 
-    <!-- RecyclerView para mostrar las sugerencias -->
+    <!-- RecyclerView con márgenes -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSugerencias"
         android:layout_width="0dp"
@@ -35,5 +49,7 @@
         app:layout_constraintTop_toBottomOf="@id/progressBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

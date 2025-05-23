@@ -7,25 +7,59 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
+    <!-- Título principal -->
     <TextView
         android:id="@+id/texto"
-        android:layout_width="wrap_content"
+        style="@style/Widget.ProyectoExtraordinario.TitleTextView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Bienvenido a la App para Desarrolladores Web"
-        android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
 
-    <Button
-        android:id="@+id/btnEntrar"
-        android:layout_width="wrap_content"
+    <!-- Descripción de la aplicación -->
+    <TextView
+        android:id="@+id/tvDescripcion"
+        style="@style/Widget.ProyectoExtraordinario.TextView"
+        android:gravity="center"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Entrar"
+        android:text="Explora sugerencias de videos, guarda tus favoritos y almacena enlaces de artículos interesantes."
         app:layout_constraintTop_toBottomOf="@id/texto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
+
+    <!-- Imagen decorativa -->
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:contentDescription="Logo de la App"
+        app:layout_constraintTop_toBottomOf="@id/tvDescripcion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        android:elevation="8dp" />
+
+    <!-- Botón para entrar -->
+    <Button
+        android:id="@+id/btnEntrar"
+        style="@style/Widget.ProyectoExtraordinario.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comenzar"
+        app:layout_constraintTop_toBottomOf="@id/ivLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        android:elevation="4dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
