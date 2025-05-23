@@ -23,6 +23,21 @@ public class ListaVideosActivity extends AppCompatActivity {
     private AppDatabase db;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Recargar los datos de la base de datos
+        new Thread(() -> {
+            List<Video> videos = db.videoDao().obtenerTodosLosVideos();
+            runOnUiThread(() -> {
+                // Actualizar los datos del adaptador
+                videoAdapter = new VideoAdapter(videos, this, db.videoDao());
+                rvListaVideos.setAdapter(videoAdapter);
+            });
+        }).start();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
@@ -46,7 +61,7 @@ public class ListaVideosActivity extends AppCompatActivity {
 
         Button btnanadirvideo = findViewById(R.id.btnAgregarVideo);
         btnanadirvideo.setOnClickListener(v -> {
-            Intent intent = new Intent(ListaVideosActivity.this, AnadirVideoActivity.class);
+            Intent intent = new Intent(ListaVideosActivity.this, SugerenciasActivity.class);
             startActivity(intent);
         });
     }

@@ -22,12 +22,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.RegistroActivity" />
         <activity android:name=".activities.PrincipalActivity" />
         <activity android:name=".activities.ListaVideosActivity" />
         <activity android:name=".activities.ListaEnlacesActivity" />
         <activity android:name=".activities.AnadirVideoActivity" />
+        <activity android:name=".activities.SugerenciasActivity" />
     </application>
 
 </manifest>

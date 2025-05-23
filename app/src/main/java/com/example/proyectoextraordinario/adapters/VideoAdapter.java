@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -82,6 +83,14 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
                 });
             }).start();
         });
+
+        holder.btnBorrarVideo.setOnClickListener(v -> {
+            new Thread(() -> {
+                videoDao.eliminarVideo(video);
+                videos.remove(position);
+                holder.itemView.post(() -> notifyItemRemoved(position));
+            }).start();
+        });
     }
 
     @Override
@@ -100,6 +109,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         TextView tvTituloVideo, tvCategoriaVideo;
         YouTubePlayerView youtubePlayerView;
         ImageButton btnFavoritos;
+        Button btnBorrarVideo;
 
         public VideoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -107,6 +117,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
             tvCategoriaVideo = itemView.findViewById(R.id.tvCategoriaVideo);
             youtubePlayerView = itemView.findViewById(R.id.youtubePlayerView);
             btnFavoritos = itemView.findViewById(R.id.btnFavoritos);
+            btnBorrarVideo = itemView.findViewById(R.id.btnBorrarVideo);
         }
     }
 }
