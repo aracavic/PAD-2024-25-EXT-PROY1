@@ -44,7 +44,7 @@ public class PrincipalActivity extends AppCompatActivity {
         new Thread(() -> {
             List<Enlace> enlacesFavoritos = db.enlaceDao().obtenerEnlacesFavoritos();
             runOnUiThread(() -> {
-                enlaceAdapter = new EnlaceAdapter(enlacesFavoritos);
+                enlaceAdapter = new EnlaceAdapter(enlacesFavoritos, db.enlaceDao());
                 rvEnlacesFavoritos.setAdapter(enlaceAdapter);
             });
         }).start();
@@ -71,5 +71,28 @@ public class PrincipalActivity extends AppCompatActivity {
             Intent intent = new Intent(PrincipalActivity.this, ListaVideosActivity.class);
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        new Thread(() -> {
+            List<Enlace> enlacesFavoritos = db.enlaceDao().obtenerEnlacesFavoritos();
+            runOnUiThread(() -> {
+                enlaceAdapter = new EnlaceAdapter(enlacesFavoritos, db.enlaceDao());
+                rvEnlacesFavoritos.setAdapter(enlaceAdapter);
+            });
+        }).start();
+
+        // Cargar videos favoritos
+        new Thread(() -> {
+            List<Video> videosFavoritos = db.videoDao().obtenerVideosFavoritos();
+            runOnUiThread(() -> {
+                videoAdapter = new VideoAdapter(videosFavoritos, this, db.videoDao());
+                rvVideosFavoritos.setAdapter(videoAdapter);
+            });
+        }).start();
+
     }
 }

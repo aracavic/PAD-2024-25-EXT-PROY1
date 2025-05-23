@@ -22,8 +22,41 @@
         android:layout_height="wrap_content"
         android:text="URL del Enlace"
         android:textSize="14sp"
+        android:autoLink="web"
         app:layout_constraintTop_toBottomOf="@id/tvTituloEnlace"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCategoriaEnlace"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Categoría del Enlace"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/tvUrlEnlace"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnBorrarEnlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Borrar"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tvCategoriaEnlace"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <ImageButton
+        android:id="@+id/btnFavoritos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_favorite_border"
+        app:layout_constraintTop_toBottomOf="@id/tvCategoriaEnlace"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        app:tint="@color/black" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

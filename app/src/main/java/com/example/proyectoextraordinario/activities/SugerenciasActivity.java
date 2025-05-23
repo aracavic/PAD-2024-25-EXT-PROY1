@@ -1,6 +1,7 @@
 package com.example.proyectoextraordinario.activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import com.example.proyectoextraordinario.R;
 import com.example.proyectoextraordinario.adapters.SimpleVideoAdapter;
 import com.example.proyectoextraordinario.database.AppDatabase;
 import com.example.proyectoextraordinario.models.*;
+import com.pierfrancescosoffritti.androidyoutubeplayer.BuildConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +27,7 @@ import retrofit2.Response;
 
 public class SugerenciasActivity extends AppCompatActivity {
 
-    private static final String API_KEY = "AIzaSyCicZjH6HP1Hc1laFh_VHrnt0hr65Of5cs";
-
+    private static final String API_KEY = "";
     private RecyclerView recyclerView;
     private Button btnAgregarVideo;
     private SimpleVideoAdapter videoAdapter;
@@ -61,7 +62,7 @@ public class SugerenciasActivity extends AppCompatActivity {
 
     private void buscarVideos() {
         // Lista de palabras clave para variar las búsquedas
-        String[] keywords = {"programación Android", "desarrollo móvil", "Kotlin", "Java", "apps Android"};
+        String[] keywords = {"programación Android", "desarrollo móvil", "Kotlin", "Java", "apps Android", "desarrollador software", "tutorial Android", "API REST", "Firebase", "SQLite Android"};
         String randomQuery = keywords[(int) (Math.random() * keywords.length)]; // Seleccionar una palabra clave aleatoria
 
         YouTubeApiService apiService = RetrofitClient.getRetrofitInstance().create(YouTubeApiService.class);
