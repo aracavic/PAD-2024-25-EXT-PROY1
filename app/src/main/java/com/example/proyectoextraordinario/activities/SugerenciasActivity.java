@@ -27,7 +27,7 @@ import retrofit2.Response;
 
 public class SugerenciasActivity extends AppCompatActivity {
 
-    private static final String API_KEY = "AIzaSyCicZjH6HP1Hc1laFh_VHrnt0hr65Of5cs";
+    private static final String API_KEY = "";
     private RecyclerView recyclerView;
     private Button btnAgregarVideo;
     private SimpleVideoAdapter videoAdapter;
