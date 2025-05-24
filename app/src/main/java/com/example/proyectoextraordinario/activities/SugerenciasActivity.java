@@ -27,7 +27,7 @@ import retrofit2.Response;
 
 public class SugerenciasActivity extends AppCompatActivity {
 
-    private static final String API_KEY = "";
+    private static final String API_KEY = "AIzaSyCicZjH6HP1Hc1laFh_VHrnt0hr65Of5cs";
     private RecyclerView recyclerView;
     private Button btnAgregarVideo;
     private SimpleVideoAdapter videoAdapter;
@@ -100,12 +100,12 @@ public class SugerenciasActivity extends AppCompatActivity {
 
     // Método para asignar una categoría basada en el título
     private String asignarCategoria(String titulo) {
-        String[] categorias = {"Programación", "Desarrollo móvil", "Kotlin", "Java", "apps Android", "desarrollador software", "tutorial Android", "API REST", "Firebase", "SQLite Android"};
+        String[] categorias = {"Todas","Programación", "Desarrollo móvil", "Kotlin", "Java", "Apps Android", "Desarrollador software", "Tutorial Android", "API REST", "Firebase", "SQLite Android"};
         for (String categoria : categorias) {
             if (titulo.toLowerCase().contains(categoria.toLowerCase())) {
-                return categoria; // Retorna la categoría si coincide
+                return categoria;
             }
         }
-        return "Sin categoría"; // Categoría predeterminada si no hay coincidencias
+        return "Sin categoría";
     }
 }

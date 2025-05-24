@@ -76,7 +76,7 @@ public class ListaVideosActivity extends AppCompatActivity {
 
         // Configurar Spinner
         Spinner spinnerTematicas = findViewById(R.id.spinnerTematicas);
-        String[] tematicas = {"Todas","Programación", "Desarrollo móvil", "Kotlin", "Java", "apps Android", "desarrollador software", "tutorial Android", "API REST", "Firebase", "SQLite Android"};
+        String[] tematicas = {"Todas","Programación", "Desarrollo móvil", "Kotlin", "Java", "Apps Android", "Desarrollador software", "Tutorial Android", "API REST", "Firebase", "SQLite Android"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tematicas);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTematicas.setAdapter(adapter);

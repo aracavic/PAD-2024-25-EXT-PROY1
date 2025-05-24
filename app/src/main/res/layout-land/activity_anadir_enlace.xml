@@ -5,48 +5,58 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Campo para el título del video -->
+    <!-- Campo para el título -->
     <EditText
-        android:id="@+id/etTituloVideo"
+        android:id="@+id/etTitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Título del Video"
-        android:inputType="text"
+        android:hint="Título"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginEnd="16dp" />
 
-    <!-- Campo para la URL del video -->
+    <!-- Campo para la URL -->
     <EditText
-        android:id="@+id/etUrlVideo"
+        android:id="@+id/etUrl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="URL del Video"
+        android:hint="URL"
         android:inputType="textUri"
-        app:layout_constraintTop_toBottomOf="@id/etTituloVideo"
+        app:layout_constraintTop_toBottomOf="@id/etTitulo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
-    <!-- Campo para la categoría del video -->
+    <!-- Spinner y CheckBox alineados horizontalmente -->
     <Spinner
         android:id="@+id/spinnerTematicas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/etUrlVideo"
+        app:layout_constraintTop_toBottomOf="@id/etUrl"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="16dp" />
+        app:layout_constraintEnd_toStartOf="@id/cbFavorito"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp" />
 
-    <!-- Botón para guardar el video -->
+    <CheckBox
+        android:id="@+id/cbFavorito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favorito"
+        app:layout_constraintTop_toBottomOf="@id/etUrl"
+        app:layout_constraintStart_toEndOf="@id/spinnerTematicas"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp" />
+
+    <!-- Botón para guardar -->
     <Button
-        android:id="@+id/btnGuardarVideo"
+        android:id="@+id/btnGuardar"
         style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar Video"
+        android:text="Guardar"
         app:layout_constraintTop_toBottomOf="@id/spinnerTematicas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -5,63 +5,70 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
-    <!-- Título del Video -->
+    <!-- Título del enlace -->
     <TextView
-        android:id="@+id/tvTituloVideo"
+        android:id="@+id/tvTituloEnlace"
         style="@style/TextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Título del Video"
+        android:text="Título del Enlace"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Categoría del Video -->
+    <!-- URL del enlace -->
     <TextView
-        android:id="@+id/tvCategoriaVideo"
+        android:id="@+id/tvUrlEnlace"
         style="@style/TextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Categoría del Video"
+        android:text="URL del Enlace"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/tvTituloVideo"
+        android:autoLink="web"
+        app:layout_constraintTop_toBottomOf="@id/tvTituloEnlace"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Reproductor de YouTube -->
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-        android:id="@+id/youtubePlayerView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintTop_toBottomOf="@id/tvCategoriaVideo"
+    <!-- Categoría del enlace -->
+    <TextView
+        android:id="@+id/tvCategoriaEnlace"
+        style="@style/TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Categoría del Enlace"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/tvUrlEnlace"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botón para borrar el video -->
+    <!-- Botón Borrar y botón Favoritos en la misma fila -->
     <Button
-        android:id="@+id/btnBorrarVideo"
+        android:id="@+id/btnBorrarEnlace"
         style="@style/Button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Borrar"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/youtubePlayerView"
+        app:layout_constraintTop_toBottomOf="@id/tvCategoriaEnlace"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintEnd_toStartOf="@id/btnFavoritos"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp" />
 
-    <!-- Botón para agregar a favoritos -->
     <ImageButton
         android:id="@+id/btnFavoritos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_favorite_border"
-        app:layout_constraintTop_toBottomOf="@id/youtubePlayerView"
+        app:layout_constraintTop_toBottomOf="@id/tvCategoriaEnlace"
+        app:layout_constraintStart_toEndOf="@id/btnBorrarEnlace"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
         app:tint="@color/black" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

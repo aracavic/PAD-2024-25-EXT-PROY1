@@ -9,6 +9,7 @@
     <!-- Título de la actividad -->
     <TextView
         android:id="@+id/tvTituloEnlaces"
+        style="@style/TitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lista de Enlaces"
@@ -32,6 +33,7 @@
     <!-- RecyclerView para mostrar los enlaces -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListaEnlaces"
+        style="@style/RecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/spinnerTematicas"
@@ -43,6 +45,7 @@
     <!-- Botón para agregar un nuevo enlace -->
     <Button
         android:id="@+id/btnAgregarEnlace"
+        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agregar Enlace"

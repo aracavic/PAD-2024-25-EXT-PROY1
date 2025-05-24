@@ -1,66 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp">
 
+    <!-- Título del video -->
     <TextView
-        android:id="@+id/tvTituloEnlace"
+        android:id="@+id/tvTituloVideoSimple"
         style="@style/TextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Título del Enlace"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="@android:color/black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- URL del video -->
     <TextView
-        android:id="@+id/tvUrlEnlace"
+        android:id="@+id/tvUrlVideoSimple"
         style="@style/TextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="URL del Enlace"
         android:textSize="14sp"
-        android:autoLink="web"
-        app:layout_constraintTop_toBottomOf="@id/tvTituloEnlace"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/tvTituloVideoSimple"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/tvCategoriaEnlace"
-        style="@style/TextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Categoría del Enlace"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/tvUrlEnlace"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/btnBorrarEnlace"
-        style="@style/Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Borrar"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/tvCategoriaEnlace"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp" />
-
-    <ImageButton
-        android:id="@+id/btnFavoritos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_favorite_border"
-        app:layout_constraintTop_toBottomOf="@id/tvCategoriaEnlace"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        app:tint="@color/black" />
+        android:layout_marginTop="4dp" />
 
+    <!-- Categoría del video -->
+    <TextView
+        android:id="@+id/tvCategoriaVideoSimple"
+        style="@style/TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/tvUrlVideoSimple"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp" />
+
+    <!-- Botón para guardar -->
+    <ImageButton
+        android:id="@+id/btnGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Guardar"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_save"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

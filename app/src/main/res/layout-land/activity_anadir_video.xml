@@ -29,16 +29,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
-    <!-- Campo para la categoría del video -->
+    <!-- Spinner y Botón alineados horizontalmente -->
     <Spinner
         android:id="@+id/spinnerTematicas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/etUrlVideo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="16dp" />
+        app:layout_constraintEnd_toStartOf="@id/btnGuardarVideo"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp" />
 
     <!-- Botón para guardar el video -->
     <Button
@@ -47,9 +47,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Guardar Video"
-        app:layout_constraintTop_toBottomOf="@id/spinnerTematicas"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etUrlVideo"
+        app:layout_constraintStart_toEndOf="@id/spinnerTematicas"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
