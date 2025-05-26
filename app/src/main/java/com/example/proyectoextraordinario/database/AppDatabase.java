@@ -11,11 +11,29 @@ import com.example.proyectoextraordinario.models.Enlace;
 import com.example.proyectoextraordinario.models.Video;
 import com.example.proyectoextraordinario.database.dao.VideoDao;
 
+/**
+ * Clase que representa la base de datos de la aplicación utilizando Room.
+ * Define las entidades y los DAOs asociados para interactuar con la base de datos.
+ */
 @Database(entities = {Enlace.class, Video.class}, version = 3) // Incrementa la versión
 public abstract class AppDatabase extends RoomDatabase {
-    private static volatile AppDatabase INSTANCE; // Declaración de la instancia
 
+    /**
+     * Instancia única de la base de datos para garantizar el patrón Singleton.
+     */
+    private static volatile AppDatabase INSTANCE;
+
+    /**
+     * Método abstracto para obtener el DAO de la entidad `Enlace`.
+     *
+     * @return Instancia de `EnlaceDao` para realizar operaciones en la tabla `Enlace`.
+     */
     public abstract EnlaceDao enlaceDao();
-    public abstract VideoDao videoDao();
 
+    /**
+     * Método abstracto para obtener el DAO de la entidad `Video`.
+     *
+     * @return Instancia de `VideoDao` para realizar operaciones en la tabla `Video`.
+     */
+    public abstract VideoDao videoDao();
 }

@@ -16,7 +16,10 @@ import com.example.proyectoextraordinario.R;
 import com.example.proyectoextraordinario.database.AppDatabase;
 import com.example.proyectoextraordinario.models.*;
 
-
+/**
+ * Actividad para añadir un nuevo enlace.
+ * Permite al usuario ingresar un título, URL, categoría y marcarlo como favorito.
+ */
 public class AnadirEnlaceActivity extends AppCompatActivity {
 
     private EditText etTitulo, etUrl, etCategoria;
@@ -25,11 +28,18 @@ public class AnadirEnlaceActivity extends AppCompatActivity {
     private AppDatabase db;
     private Spinner spinnerTematicas;
 
+    /**
+     * Método que se ejecuta al crear la actividad.
+     * Inicializa las vistas, configura el spinner de temáticas y el botón de guardar.
+     *
+     * @param savedInstanceState Estado guardado de la actividad.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anadir_enlace);
 
+        // Inicializar la base de datos
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "usuarios-db").build();
 
         // Inicializar vistas
@@ -39,13 +49,14 @@ public class AnadirEnlaceActivity extends AppCompatActivity {
         btnGuardar = findViewById(R.id.btnGuardar);
         spinnerTematicas = findViewById(R.id.spinnerTematicas);
 
-        Spinner spinnerTematicas = findViewById(R.id.spinnerTematicas);
-        String[] tematicas = {"Inteligencia Artificial","Ciencia de Datos", "Ciberseguridad", "Desarrollo Web", "Diseño UX/UI", "Cloud Computing", "DevOps", "Software Libre"};
+        // Configurar el spinner de temáticas
+        String[] tematicas = {"Inteligencia Artificial", "Ciencia de Datos", "Ciberseguridad",
+                "Desarrollo Web", "Diseño UX/UI", "Cloud Computing", "DevOps", "Software Libre"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tematicas);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTematicas.setAdapter(adapter);
 
-        // Configurar botón de guardar
+        // Configurar el botón de guardar
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,6 +65,10 @@ public class AnadirEnlaceActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Método para guardar un nuevo enlace en la base de datos.
+     * Valida los campos antes de guardar y muestra un mensaje de confirmación.
+     */
     private void guardarEnlace() {
         // Obtener datos de los campos
         String titulo = etTitulo.getText().toString().trim();
@@ -67,18 +82,22 @@ public class AnadirEnlaceActivity extends AppCompatActivity {
             return;
         }
 
+        // Guardar el enlace en la base de datos en un hilo separado
         new Thread(() -> {
             // Crear objeto Enlace
             Enlace enla = new Enlace(titulo, url, categoria, favorito);
 
+            // Insertar el enlace en la base de datos
             db.enlaceDao().insertarEnlace(enla);
+
+            // Mostrar mensaje de éxito en el hilo principal
             runOnUiThread(() -> {
                 Toast.makeText(this, "Video guardado exitosamente", Toast.LENGTH_SHORT).show();
                 finish();
             });
         }).start();
 
+        // Finalizar la actividad
         finish();
     }
-
 }
